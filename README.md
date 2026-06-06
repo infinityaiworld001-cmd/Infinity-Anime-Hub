@@ -1,57 +1,79 @@
 # 🎌 Infinity Anime Hub
 
-Infinity Anime Hub is a modern anime discovery platform built using Python Flask. The website allows users to search for anime, explore detailed information, view ratings, genres, episode counts, synopsis, and watch official trailers.
+Infinity Anime Hub is a modern anime discovery platform built using Python Flask. The website allows users to search anime, view detailed information, explore trending series, filter by genres, save favorites to a personal watchlist, and read anime news updates.
 
-The project was created to provide anime fans with a clean and user-friendly platform for discovering anime while helping developers learn API integration and web development.
+This project was created as a learning project to improve web development skills using Flask, SQLite, HTML, CSS, JavaScript, and API integration.
 
 ---
 
 ## 🚀 Features
 
-* Anime Search System
-* Top Anime Section
-* Anime Details Page
-* Anime Ratings
-* Anime Genres
-* Episode Information
-* Anime Synopsis
-* Official Anime Trailers
-* Modern Dark Theme UI
-* Responsive Design
+### 🔍 Anime Search
 
----
+Search anime titles instantly using the Jikan API.
 
-## 🎯 Main Functions
+### 📖 Anime Details
 
-### Search Anime
+View:
 
-Users can search for anime titles such as:
-
-* One Piece
-* Naruto
-* Bleach
-* Solo Leveling
-* Demon Slayer
-* Dragon Ball
-
-and many more.
-
-### Anime Information
-
-The website displays:
-
-* Anime Poster
 * Anime Title
+* Poster Image
 * Rating Score
 * Episode Count
 * Anime Type
-* Genres
 * Duration
+* Genres
 * Synopsis
 
-### Anime Trailer
+### 🎬 Anime Trailer
 
-Users can watch official trailers directly from the anime details page when available.
+Watch official anime trailers directly from the details page.
+
+### 🔥 Trending Anime
+
+Discover currently trending and popular anime series.
+
+### 🎭 Genre Filter
+
+Browse anime by genres:
+
+* Action
+* Adventure
+* Comedy
+* Drama
+* Fantasy
+* Horror
+* Romance
+* Sci-Fi
+* Slice of Life
+* Supernatural
+
+### 👤 User Account System
+
+* Register Account
+* Login
+* Logout
+* Secure Password Storage
+
+### ❤️ Anime Watchlist
+
+Users can:
+
+* Add Anime to Watchlist
+* View Saved Anime
+* Remove Anime from Watchlist
+
+### 📰 Anime News Section
+
+Read anime-related articles, updates, and recommendations.
+
+### 👤 User Profile
+
+View:
+
+* Username
+* User ID
+* Total Watchlist Count
 
 ---
 
@@ -61,19 +83,21 @@ Users can watch official trailers directly from the anime details page when avai
 
 * Python
 * Flask
+* SQLite3
 * Requests
+* Werkzeug
 
 ### Frontend
 
-* HTML
-* CSS
+* HTML5
+* CSS3
 * JavaScript
 
 ### API
 
 * Jikan API
 
-The Jikan API provides anime data from MyAnimeList.
+The Jikan API provides anime information from MyAnimeList.
 
 ---
 
@@ -83,12 +107,20 @@ The Jikan API provides anime data from MyAnimeList.
 Infinity_Anime_Hub/
 
 │ app.py
+│ animehub.db
 │ README.md
 
 ├── templates/
 │   ├── index.html
 │   ├── search.html
-│   └── details.html
+│   ├── details.html
+│   ├── login.html
+│   ├── register.html
+│   ├── watchlist.html
+│   ├── trending.html
+│   ├── genres.html
+│   ├── profile.html
+│   └── news.html
 
 └── static/
     ├── style.css
@@ -102,7 +134,7 @@ Infinity_Anime_Hub/
 Install required packages:
 
 ```bash
-pip install flask requests
+pip install flask requests werkzeug
 ```
 
 Run the application:
@@ -119,26 +151,58 @@ http://127.0.0.1:5000
 
 ---
 
-## 🌟 Future Updates
+## 🗄 Database
 
-Planned features include:
+Database Name:
 
-* User Login System
-* Anime Watchlist
-* Favorites System
-* SQLite Database
-* Anime Genre Filters
-* Trending Anime Section
-* Anime News Blog
-* Tamil / Hindi / English Availability Notes
-* User Profiles
-* Dark / Light Theme Switch
+```text
+animehub.db
+```
+
+### Users Table
+
+Stores:
+
+* Username
+* Email
+* Password
+
+### Watchlist Table
+
+Stores:
+
+* Anime ID
+* Anime Title
+* Poster Image
+* Rating
+* User Watchlist Data
 
 ---
 
-## 📚 Project Goals
+## 🎯 Project Goals
 
-The goal of Infinity Anime Hub is to provide anime fans with an easy way to discover anime information while serving as a practical learning project for Flask web development and API integration.
+The goal of Infinity Anime Hub is to provide anime fans with an easy way to discover anime information while helping developers learn:
+
+* Flask Web Development
+* SQLite Database Management
+* API Integration
+* User Authentication
+* Responsive Web Design
+
+---
+
+## 🌟 Future Updates
+
+Planned features:
+
+* Favorites System
+* Dark / Light Theme Toggle
+* Advanced Search Filters
+* Anime Recommendations
+* User Reviews
+* Community Discussion System
+* Admin Dashboard
+* Personalized Anime Suggestions
 
 ---
 
@@ -146,7 +210,7 @@ The goal of Infinity Anime Hub is to provide anime fans with an easy way to disc
 
 Infinity Anime Hub does not host or stream copyrighted anime episodes.
 
-The website only displays anime information and trailers using publicly available anime APIs.
+The website only displays anime information and official trailer content using publicly available anime APIs.
 
 ---
 
@@ -158,5 +222,6 @@ I.M.Kumar
 
 ## ⭐ Version
 
-Current Version: 1.0
-Status: Active Development
+Version: 3.0
+
+Status: Completed & Active Development

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <h2>∞ Infinity Anime Hub</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/trending">Trending</a>
+        <a href="/genres">Genres</a>
+        <a href="/news">Anime News</a>
+        <a href="/watchlist">Watchlist</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<section class="profile-box">
+    <h1>👤 My Profile</h1>
+
+    <div class="profile-card">
+        <h2>{{ session.get("username") }}</h2>
+        <p>User ID: {{ session.get("user_id") }}</p>
+        <p>Total Watchlist Anime: {{ total_watchlist }}</p>
+
+        <a class="btn" href="/watchlist">View My Watchlist</a>
+    </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Infinity Anime Hub</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <h2>∞ Infinity Anime Hub</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/trending">Trending</a>
+        <a href="/genres">Genres</a>
+        <a href="/news">Anime News</a>
+        <a href="/watchlist">Watchlist</a>
+
+        {% if session.get("user_id") %}
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<header class="hero">
+    <h1>Discover Your Favorite Anime</h1>
+    <p>Search anime, view ratings, genres, synopsis, trailers and save your watchlist.</p>
+
+    <form action="/search" method="get" class="search-box">
+        <input type="text" name="q" placeholder="Search One Piece, Naruto, Bleach...">
+        <button>Search</button>
+    </form>
+</header>
+
+<section class="container">
+    <h2>Top Anime</h2>
+
+    <div class="grid">
+        {% for anime in top_anime %}
+        <a href="/anime/{{ anime.mal_id }}" class="card">
+            <img src="{{ anime.images.jpg.large_image_url }}">
+            <h3>{{ anime.title }}</h3>
+            <p>⭐ {{ anime.score }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

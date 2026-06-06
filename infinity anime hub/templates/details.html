@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ anime.title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <h2>∞ Infinity Anime Hub</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/trending">Trending</a>
+        <a href="/genres">Genres</a>
+        <a href="/news">Anime News</a>
+        <a href="/watchlist">Watchlist</a>
+
+        {% if session.get("user_id") %}
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<section class="details">
+
+    <div class="poster">
+        <img src="{{ anime.images.jpg.large_image_url }}">
+    </div>
+
+    <div class="info">
+        <h1>{{ anime.title }}</h1>
+        <p class="jp">{{ anime.title_japanese }}</p>
+
+        <div class="stats">
+            <span>⭐ {{ anime.score }}</span>
+            <span>🎬 {{ anime.type }}</span>
+            <span>📺 {{ anime.episodes }} Episodes</span>
+            <span>⏱ {{ anime.duration }}</span>
+        </div>
+
+        <h3>Genres</h3>
+        <div class="genres">
+            {% for genre in anime.genres %}
+                <span>{{ genre.name }}</span>
+            {% endfor %}
+        </div>
+
+        <h3>Synopsis</h3>
+        <p class="synopsis">{{ anime.synopsis }}</p>
+
+        <form action="/add_watchlist" method="post">
+            <input type="hidden" name="anime_id" value="{{ anime.mal_id }}">
+            <input type="hidden" name="title" value="{{ anime.title }}">
+            <input type="hidden" name="image_url" value="{{ anime.images.jpg.large_image_url }}">
+            <input type="hidden" name="score" value="{{ anime.score }}">
+            <button class="btn">+ Add to Watchlist</button>
+        </form>
+
+        {% if anime.trailer and anime.trailer.embed_url %}
+        <h3>Trailer</h3>
+        <iframe src="{{ anime.trailer.embed_url }}" allowfullscreen></iframe>
+        {% endif %}
+    </div>
+
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

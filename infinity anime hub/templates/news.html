@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime News</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <h2>∞ Infinity Anime Hub</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/trending">Trending</a>
+        <a href="/genres">Genres</a>
+        <a href="/news">Anime News</a>
+        <a href="/watchlist">Watchlist</a>
+
+        {% if session.get("user_id") %}
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<section class="container">
+    <h1>📰 Anime News Blog</h1>
+
+    <div class="news-grid">
+        {% for post in posts %}
+        <div class="news-card">
+            <span>{{ post.category }}</span>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <a href="#">Read More</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

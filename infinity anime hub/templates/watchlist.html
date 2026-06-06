@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Watchlist</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <h2>∞ Infinity Anime Hub</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/trending">Trending</a>
+        <a href="/genres">Genres</a>
+        <a href="/news">Anime News</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<section class="container">
+    <h1>My Anime Watchlist</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <div class="grid">
+        {% for item in items %}
+        <div class="card">
+            <img src="{{ item.image_url }}">
+            <h3>{{ item.title }}</h3>
+            <p>⭐ {{ item.score }}</p>
+            <a class="remove" href="/remove_watchlist/{{ item.id }}">Remove</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

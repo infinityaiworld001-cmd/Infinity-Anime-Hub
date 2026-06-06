@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Anime</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <h2>∞ Infinity Anime Hub</h2>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/trending">Trending</a>
+        <a href="/genres">Genres</a>
+        <a href="/news">Anime News</a>
+        <a href="/watchlist">Watchlist</a>
+
+        {% if session.get("user_id") %}
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<section class="container">
+    <h1>Search Results for "{{ query }}"</h1>
+
+    <form action="/search" method="get" class="search-box small">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search anime...">
+        <button>Search</button>
+    </form>
+
+    <div class="grid">
+        {% for anime in anime_list %}
+        <a href="/anime/{{ anime.mal_id }}" class="card">
+            <img src="{{ anime.images.jpg.large_image_url }}">
+            <h3>{{ anime.title }}</h3>
+            <p>⭐ {{ anime.score }}</p>
+            <p>{{ anime.type }} | {{ anime.episodes }} Episodes</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
